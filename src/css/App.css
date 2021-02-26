@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  color: white !important;
+  background-color: black !important;
+}
+
+.App {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.banner {
+  position: absolute;
+  top: 30%;
+  width: 50%;
+  left: 25%;
+  animation-name: initialAnimation;
+  animation-duration: 1s;
+}
+
+#main_landing_page {
+  height: 100%;
+  background-image: url("../images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.561);
+  background-blend-mode: multiply;
+  overflow: hidden;
+}
+
+.btn-outline-secondary {
+  color: white !important;
+  border-color: white !important;
+  border-radius: 1em !important;
+}
+
+.btn-outline-secondary:hover {
+  background-color: white !important;
+  color: black !important;
+}
+
+@keyframes initialAnimation {
+  0% {
+    transform: translateX(120px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
