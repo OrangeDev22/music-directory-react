@@ -9,8 +9,8 @@ import SignUpComponent from "./pages/signUpPage";
 function App() {
   return (
     <div className="App">
-      <NavComponent />
       <Router>
+        <NavComponent />
         <Switch>
           <Route exact path="/">
             <LandingPage />
