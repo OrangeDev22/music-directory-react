@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { auth } from "../firebase";
 import { Navbar, Form, FormControl, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -33,7 +33,7 @@ function NavComponent() {
 
   const loggedInButtons = () => {
     return (
-      <div>
+      <div className="d-flex justify-content-center text-center">
         <Button
           className="mr-1"
           variant="outline-primary"

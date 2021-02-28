@@ -51,6 +51,15 @@ body {
   color: red;
 }
 
+.spinner-border {
+  width: 10rem !important;
+  height: 10rem !important;
+  border-width: 1rem !important;
+  position: absolute;
+  left: 50%;
+  margin-top: 1em;
+}
+
 @keyframes initialAnimation {
   0% {
     transform: translateX(120px);
