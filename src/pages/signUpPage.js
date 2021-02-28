@@ -25,13 +25,10 @@ function SignUpComponent() {
           const user = auth.currentUser;
           setMessage("");
           setShowMessage(false);
-          user
-            .updateProfile({
-              displayName: userName,
-            })
-            .then(() => {
-              history.push("/");
-            });
+          user.updateProfile({
+            displayName: userName,
+          });
+          history.push("/");
         })
         .catch((error) => {
           setMessage(error.message);
