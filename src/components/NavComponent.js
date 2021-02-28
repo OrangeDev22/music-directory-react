@@ -7,9 +7,7 @@ function NavComponent() {
 
   return (
     <Navbar bg="dark" variant="dark" className="d-flex">
-      <Link to="/">
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-      </Link>
+      <Navbar.Brand href="/">Navbar</Navbar.Brand>
       <Form inline className="flex-grow-1 ml-5 mr-5">
         <FormControl type="text" placeholder="Search" className=" w-100" />
       </Form>
