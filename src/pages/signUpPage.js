@@ -18,14 +18,20 @@ function SignUpComponent() {
     const userName = userNameRef.current.value;
     const password = passwordRef.current.value;
     const passwordRepeat = passwordRepeatRef.current.value;
-    console.log(userName);
     if (password === passwordRepeat && userName) {
       auth
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
+          const user = auth.currentUser;
           setMessage("");
           setShowMessage(false);
-          history.push("/");
+          user
+            .updateProfile({
+              displayName: userName,
+            })
+            .then(() => {
+              history.push("/");
+            });
         })
         .catch((error) => {
           setMessage(error.message);
