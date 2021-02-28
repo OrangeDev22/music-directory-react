@@ -1,10 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { auth } from "../firebase";
 
 function SignUpComponent() {
   const history = useHistory();
+  const [showMessage, setShowMessage] = useState(false);
+  const [message, setMessage] = useState("");
   const emailRef = useRef(null);
   const userNameRef = useRef(null);
   const passwordRef = useRef(null);
@@ -16,13 +18,24 @@ function SignUpComponent() {
     const userName = userNameRef.current.value;
     const password = passwordRef.current.value;
     const passwordRepeat = passwordRepeatRef.current.value;
-    if (password === passwordRepeat) {
+    console.log(userName);
+    if (password === passwordRepeat && userName) {
       auth
         .createUserWithEmailAndPassword(email, password)
-        .then(() => history.push("/"))
-        .catch((error) => alert(error.message));
+        .then(() => {
+          setMessage("");
+          setShowMessage(false);
+          history.push("/");
+        })
+        .catch((error) => {
+          setMessage(error.message);
+          setShowMessage(true);
+        });
     } else {
-      alert("Your password is not the same!");
+      setShowMessage(true);
+      setMessage(
+        userName === "" ? "Write a user name" : "Your password is not the same!"
+      );
     }
   };
 
@@ -34,9 +47,17 @@ function SignUpComponent() {
           className="col-lg-6 offset-lg-3 mt-3 d-flex flex-column "
           onSubmit={(e) => signUp(e)}
         >
+          <div style={{ height: "1em", marginBottom: "8px" }}>
+            <Form.Label className="message_error ">{message}</Form.Label>
+          </div>
           <Form.Group>
             <Form.Label>Email</Form.Label>
-            <FormControl type="email" placeholder="Email" ref={emailRef} />
+            <FormControl
+              type="email"
+              placeholder="Email"
+              ref={emailRef}
+              isInvalid={showMessage}
+            />
           </Form.Group>
           <Form.Group>
             <Form.Label>User name</Form.Label>
@@ -44,6 +65,7 @@ function SignUpComponent() {
               type="text"
               placeholder="User name"
               ref={userNameRef}
+              isInvalid={showMessage}
             />
           </Form.Group>
           <Form.Group>
@@ -52,6 +74,7 @@ function SignUpComponent() {
               type="password"
               placeholder="Password"
               ref={passwordRef}
+              isInvalid={showMessage}
             />
           </Form.Group>
           <Form.Group>
@@ -60,8 +83,10 @@ function SignUpComponent() {
               type="password"
               placeholder="Repeat password"
               ref={passwordRepeatRef}
+              isInvalid={showMessage}
             />
           </Form.Group>
+
           <Button className="mt-2" type="submit">
             Create Account
           </Button>

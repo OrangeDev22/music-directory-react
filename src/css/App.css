@@ -47,6 +47,10 @@ body {
   color: black !important;
 }
 
+.message_error {
+  color: red;
+}
+
 @keyframes initialAnimation {
   0% {
     transform: translateX(120px);
