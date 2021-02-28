@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { auth } from "./firebase";
 import { useSelector, useDispatch } from "react-redux";
 import SignUpComponent from "./pages/signUpPage";
+import LoginPage from "./pages/loginPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,8 +16,10 @@ function App() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        console.log("auth user", authUser);
-        dispatch({ type: "LOGIN", payload: { user: authUser } });
+        // console.log("auth user", authUser);
+        dispatch({ type: "SET_USER", payload: { user: authUser } });
+      } else {
+        dispatch({ type: "LOG_OUT", payload: { user: null } });
       }
     });
     return () => {
@@ -34,6 +37,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignUpComponent />
+          </Route>
+          <Route path="/signin">
+            <LoginPage />
           </Route>
         </Switch>
       </Router>

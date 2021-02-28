@@ -19,7 +19,12 @@ function NavComponent() {
         >
           Sign Up
         </Button>
-        <Button variant="outline-primary" className="mr-1" size="sm">
+        <Button
+          variant="outline-primary"
+          className="mr-1"
+          size="sm"
+          onClick={() => history.push("/signin")}
+        >
           Sign In
         </Button>
       </div>
