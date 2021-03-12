@@ -60,7 +60,7 @@ function NavComponent() {
       <Navbar.Brand href="/">Navbar</Navbar.Brand>
       <Form
         inline
-        className="flex-grow-1 ml-5 mr-5"
+        className={"flex-grow-1 ml-5 mr-5"}
         onSubmit={(e) => searchHandler(e)}
       >
         <FormControl

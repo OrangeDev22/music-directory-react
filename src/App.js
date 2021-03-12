@@ -11,6 +11,7 @@ import SignUpComponent from "./pages/signUpPage";
 import LoginPage from "./pages/loginPage";
 import axios from "axios";
 import SearchPage from "./pages/searchPage";
+import "react-h5-audio-player/lib/styles.css";
 
 const CLIENT_ID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.REACT_APP_SPOTIFY_CLIENT_SECRET;
@@ -32,7 +33,7 @@ function App() {
       console.log(tokenResponse);
       dispatch({
         type: "SET_TOKEN",
-        payload: { accesss_token: tokenResponse.data.access_token },
+        payload: { access_token: tokenResponse.data.access_token },
       });
     });
   }, [CLIENT_ID, CLIENT_SECRET]);
