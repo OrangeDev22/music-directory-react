@@ -11,6 +11,7 @@ import SignUpComponent from "./pages/signUpPage";
 import LoginPage from "./pages/loginPage";
 import axios from "axios";
 import SearchPage from "./pages/searchPage";
+import ProfilePage from "./pages/profilePage";
 import "react-h5-audio-player/lib/styles.css";
 
 const CLIENT_ID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
@@ -30,7 +31,7 @@ function App() {
       data: "grant_type=client_credentials",
       method: "POST",
     }).then((tokenResponse) => {
-      console.log(tokenResponse);
+      // console.log(tokenResponse);
       dispatch({
         type: "SET_TOKEN",
         payload: { access_token: tokenResponse.data.access_token },
@@ -73,6 +74,9 @@ function App() {
           </Route>
           <Route path="/search">
             <SearchPage />
+          </Route>
+          <Route>
+            <ProfilePage path="/profile" />
           </Route>
         </Switch>
       </Router>

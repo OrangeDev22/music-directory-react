@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { auth } from "../firebase";
 import { Navbar, Form, FormControl, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { BsPersonFill } from "react-icons/bs";
 
 function NavComponent() {
   const history = useHistory();
@@ -39,7 +40,7 @@ function NavComponent() {
 
   const loggedInButtons = () => {
     return (
-      <div className="d-flex justify-content-center text-center">
+      <div className="d-flex justify-content-center text-center align-items-center">
         <Button
           className="mr-1"
           variant="outline-primary"
@@ -51,6 +52,11 @@ function NavComponent() {
         >
           Log out
         </Button>
+        <BsPersonFill
+          size={30}
+          className="ml-3 mr-3 profile-button"
+          onClick={() => history.push("/profile")}
+        />
       </div>
     );
   };

@@ -93,6 +93,46 @@ body {
   width: 100%;
 }
 
+.profile-button {
+  cursor: pointer;
+}
+
+.label {
+  margin-bottom: 4px;
+  color: grey;
+  font-weight: bold;
+}
+
+.user_info {
+  margin: auto;
+  max-width: 1200px;
+  background: #2b2f35;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.user_info_item {
+  margin-bottom: 1em;
+}
+
+.user_profile_pic {
+  width: 100px;
+  height: 100px;
+}
+
+.user_profile_pic > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.user_info_main {
+  background: #212529;
+  padding: 1em;
+  border-radius: 1em;
+  border: whitesmoke solid 1px;
+}
+
 @keyframes initialAnimation {
   0% {
     transform: translateX(120px);
